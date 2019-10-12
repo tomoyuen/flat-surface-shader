@@ -1,0 +1,26 @@
+{
+  "name": "flat-surface-shader",
+  "version": "1.0.0",
+  "description": "Simple, lightweight **Flat Surface Shader** written in **JavaScript** for rendering lit **Triangles** to a number of contexts. Currently there is support for **WebGL**, **Canvas 2D** and **SVG**. Check out this [demo][demo] to see it in action.",
+  "main": "deploy/fss.module.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "node build/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomoyuen/flat-surface-shader.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomoyuen/flat-surface-shader/issues"
+  },
+  "homepage": "https://github.com/tomoyuen/flat-surface-shader#readme",
+  "devDependencies": {
+    "uglify-js": "^2.2.5"
+  }
+}

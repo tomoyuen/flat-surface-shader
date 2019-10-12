@@ -5,9 +5,10 @@ var uglify = require('uglify-js');
 // Settings
 var FILE_ENCODING = 'utf-8',
     PROJECT_NAME  = 'fss',
-    LICENSE       = '../LICENSE.md',
-    SOURCE_DIR    = '../source',
-    OUTPUT_DIR    = '../deploy',
+    LICENSE       = './LICENSE.md',
+    MODULE        = './source/Module.js',
+    SOURCE_DIR    = './source',
+    OUTPUT_DIR    = './deploy',
     SCRIPTS       = [
         'Core.js',
         'Math.js',
@@ -36,10 +37,13 @@ function getPath() {
 
 // Processes the specified files, creating a concatenated and a concatenated and minified output
 function process() {
-    var joined, license, unminified, minified;
+    var joined, license, unminified, minified, moduled;
 
     // Read the license
     license = fs.readFileSync(LICENSE, FILE_ENCODING);
+
+    // Red the module export
+    moduled = fs.readFileSync(MODULE, FILE_ENCODING);
 
     // Join the contents of all sources files into a single string
     joined = SCRIPTS.map(function(file) {
@@ -49,11 +53,17 @@ function process() {
     // Unminified
     unminified = license + '\n' + joined;
 
+    // module
+    moduled = license + '\n' + joined + '\n' + moduled;
+
     // Minified
     minified = license + uglify.minify(joined, {fromString: true}).code;
 
     // Write out the concatenated file
     fs.writeFileSync(getPath(OUTPUT_DIR, PROJECT_NAME + '.js'), unminified, FILE_ENCODING);
+
+    // Write out the moduled file
+    fs.writeFileSync(getPath(OUTPUT_DIR, PROJECT_NAME + '.module.js'), moduled, FILE_ENCODING);
 
     // Write out the minfied file
     fs.writeFileSync(getPath(OUTPUT_DIR, PROJECT_NAME + '.min.js'), minified, FILE_ENCODING);

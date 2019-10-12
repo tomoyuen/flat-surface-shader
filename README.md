@@ -78,11 +78,11 @@ renderer.render(scene);
 
 Install Dependancies:
 
-    npm install uglify-js@2.2.5
+    npm install
 
 Build:
 
-    node build.js
+    npm run build
 
 ## Inspiration
 

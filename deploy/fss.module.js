@@ -1224,3 +1224,5 @@ FSS.SVGRenderer.prototype.formatStyle = function(color) {
   style += 'stroke:'+color+';';
   return style;
 };
+
+export default FSS;
